@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间和接口保持一致-->
+<mapper namespace="com.skylon.server.dao.RealtimeMonitoringDao">
+
+
+    <insert id="insertMInformation" parameterType="com.skylon.server.entity.RealTimeMonitoringInformation">
+        insert into TFQ_Monitor_R (ProjId, AppId, ParamId, Tm, Status, Moditime)
+        VALUES (#{projectcode}, #{programcode}, #{parametercode}, #{collectiontime}, #{status}, #{receivetime})
+    </insert>
+    <select id="verifyProjId" parameterType="String" resultType="String">
+        SELECT ProjName
+        FROM TFQ_PROJ_B
+        WHERE ProjId = #{id}
+    </select>
+    <select id="verifyAppId" parameterType="String" resultType="String">
+        SELECT AppName
+        FROM TFQ_APP_B
+        WHERE AppId = #{id}
+    </select>
+    <select id="verifyParamId" parameterType="String" resultType="String">
+        SELECT ParamName
+        FROM TFQ_PARAM_B
+        WHERE ParamId = #{id}
+    </select>
+
+</mapper>
+
+
